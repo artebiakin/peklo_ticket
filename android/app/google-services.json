@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "23609096857",
+    "project_id": "peklo-ticket",
+    "storage_bucket": "peklo-ticket.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23609096857:android:ad5797adb0fa44a9915608",
+        "android_client_info": {
+          "package_name": "com.example.peklo_ticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_8LeTxe5KZwZH3P9LEQ2ySBT4TeFif3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
