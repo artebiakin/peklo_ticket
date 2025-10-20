@@ -201,11 +201,6 @@ class _Card extends HookWidget {
             Text(currentName.value)
                 .animate(
                   key: ValueKey(currentName.value),
-                  onComplete: (controller) async {
-                    currentName.value = names[random.nextInt(names.length - 1)];
-                    await Future.delayed((Random().nextInt(500) + 500).ms);
-                    controller.forward(from: 0);
-                  },
                 )
                 .fadeIn(duration: 350.ms),
             Image.asset(currentAvatar.value)
