@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/dashboard/animated_ticket_button.dart';
 import 'package:peklo_ticket/presentation/widgets/dashboard/support_float_button.dart';
 import 'package:peklo_ticket/presentation/widgets/widgets.dart';
@@ -52,38 +54,41 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Logo(),
-      ),
-      floatingActionButton: SupportFloatButton(
-        infoMessage: infoMessage,
-        onInfoAnimationComplete: onInfoAnimationComplete,
-      ),
-      body: Stack(
-        children: [
-          CupertinoPicker(
-            itemExtent: 100,
-            onSelectedItemChanged: (_) {},
-            children: _sloganContent
-                .map((e) => Center(
-                      child: Text(
-                        e,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
+    return GestureDetector(
+      onTap: () => context.go(AppRoute.login.path),
+      child: Scaffold(
+        backgroundColor: bgColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Logo(),
+        ),
+        floatingActionButton: SupportFloatButton(
+          infoMessage: infoMessage,
+          onInfoAnimationComplete: onInfoAnimationComplete,
+        ),
+        body: Stack(
+          children: [
+            CupertinoPicker(
+              itemExtent: 100,
+              onSelectedItemChanged: (_) {},
+              children: _sloganContent
+                  .map((e) => Center(
+                        child: Text(
+                          e,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ))
-                .toList(),
-          ),
-          AnimatedTicketButton(
-            onPressed: onTapCounter,
-          ),
-        ],
+                      ))
+                  .toList(),
+            ),
+            AnimatedTicketButton(
+              onPressed: onTapCounter,
+            ),
+          ],
+        ),
       ),
     );
   }

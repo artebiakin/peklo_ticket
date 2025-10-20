@@ -22,11 +22,64 @@ class $AssetsImagesGen {
   AssetGenImage get a1StartScreen =>
       const AssetGenImage('assets/images/1. Start screen.png');
 
+  /// File path: assets/images/avatar_1.png
+  AssetGenImage get avatar1 =>
+      const AssetGenImage('assets/images/avatar_1.png');
+
+  /// File path: assets/images/avatar_2.png
+  AssetGenImage get avatar2 =>
+      const AssetGenImage('assets/images/avatar_2.png');
+
+  /// File path: assets/images/avatar_3.png
+  AssetGenImage get avatar3 =>
+      const AssetGenImage('assets/images/avatar_3.png');
+
+  /// File path: assets/images/avatar_4.png
+  AssetGenImage get avatar4 =>
+      const AssetGenImage('assets/images/avatar_4.png');
+
+  /// File path: assets/images/avatar_5.png
+  AssetGenImage get avatar5 =>
+      const AssetGenImage('assets/images/avatar_5.png');
+
+  /// File path: assets/images/avatar_6.png
+  AssetGenImage get avatar6 =>
+      const AssetGenImage('assets/images/avatar_6.png');
+
+  /// File path: assets/images/avatar_7.png
+  AssetGenImage get avatar7 =>
+      const AssetGenImage('assets/images/avatar_7.png');
+
+  /// File path: assets/images/avatar_8.png
+  AssetGenImage get avatar8 =>
+      const AssetGenImage('assets/images/avatar_8.png');
+
+  /// File path: assets/images/button_next.png
+  AssetGenImage get buttonNext =>
+      const AssetGenImage('assets/images/button_next.png');
+
   /// File path: assets/images/cart.png
   AssetGenImage get cart => const AssetGenImage('assets/images/cart.png');
 
+  /// File path: assets/images/coin.png
+  AssetGenImage get coin => const AssetGenImage('assets/images/coin.png');
+
+  /// File path: assets/images/form_bg.png
+  AssetGenImage get formBg => const AssetGenImage('assets/images/form_bg.png');
+
+  /// File path: assets/images/hair.png
+  AssetGenImage get hair => const AssetGenImage('assets/images/hair.png');
+
+  /// File path: assets/images/login_done.png
+  AssetGenImage get loginDone =>
+      const AssetGenImage('assets/images/login_done.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/morpheus.png
+  AssetGenImage get morpheus =>
+      const AssetGenImage('assets/images/morpheus.png');
 
   /// File path: assets/images/password_bg.png
   AssetGenImage get passwordBg =>
@@ -45,8 +98,22 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
         a1StartScreenWithClip,
         a1StartScreen,
+        avatar1,
+        avatar2,
+        avatar3,
+        avatar4,
+        avatar5,
+        avatar6,
+        avatar7,
+        avatar8,
+        buttonNext,
         cart,
+        coin,
+        formBg,
+        hair,
+        loginDone,
         logo,
+        morpheus,
         passwordBg,
         rug,
         support,

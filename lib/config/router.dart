@@ -5,6 +5,9 @@ import 'package:peklo_ticket/presentation/screens/screens.dart';
 enum AppRoute {
   dashboard,
   start,
+  login,
+  chooseZone,
+  form,
   password;
 
   String get path {
@@ -15,12 +18,18 @@ enum AppRoute {
         return '/';
       case AppRoute.password:
         return '/password';
+      case AppRoute.form:
+        return '/form';
+      case AppRoute.chooseZone:
+        return '/chooseZone';
+      case AppRoute.login:
+        return '/login';
     }
   }
 }
 
 final router = GoRouter(
-  initialLocation: AppRoute.dashboard.path,
+  initialLocation: AppRoute.start.path,
   routes: [
     GoRoute(
         path: AppRoute.start.path,
@@ -31,5 +40,14 @@ final router = GoRouter(
     GoRoute(
         path: AppRoute.dashboard.path,
         builder: (context, state) => const DashboardScreen()),
+    GoRoute(
+        path: AppRoute.login.path,
+        builder: (context, state) => const LoginScreen()),
+    GoRoute(
+        path: AppRoute.form.path,
+        builder: (context, state) => const FormScreen()),
+    GoRoute(
+        path: AppRoute.chooseZone.path,
+        builder: (context, state) => const ChooseZoneScreen()),
   ],
 );
