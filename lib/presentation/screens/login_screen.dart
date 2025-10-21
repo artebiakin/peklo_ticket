@@ -136,7 +136,7 @@ class CompleteWidget extends StatelessWidget {
               maxHeight: 300,
               maxWidth: 300,
             ),
-            child: Image.asset(images.loginDone.path),
+            child: Image.asset(image.loginDone.path),
           ),
         ),
         ValueListenableBuilder(

@@ -30,8 +30,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int tapCounter = 0;
   String infoMessage = '';
 
-  void onTapCounter() {
+  bool isButtonLocked = false;
+
+  void onTapCounter() async {
+    if (isButtonLocked) return;
+
+    if (tapCounter >= 4) {
+      context.go(AppRoute.login.path);
+      return;
+    }
+
     setState(() {
+      isButtonLocked = true;
       tapCounter++;
       infoMessage = switch (tapCounter) {
         1 => 'Tю.... ти серйозно?',
@@ -40,7 +50,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
         _ => 'ну ти... зупинись вже!',
       };
     });
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    if (!mounted) return;
+
+    setState(() {
+      isButtonLocked = false;
+    });
   }
+
+  // context.go(AppRoute.login.path)
 
   Future<void> onInfoAnimationComplete() async {
     await Future.delayed(1.seconds);
@@ -54,41 +74,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => context.go(AppRoute.login.path),
-      child: Scaffold(
-        backgroundColor: bgColor,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: const Logo(),
-        ),
-        floatingActionButton: SupportFloatButton(
-          infoMessage: infoMessage,
-          onInfoAnimationComplete: onInfoAnimationComplete,
-        ),
-        body: Stack(
-          children: [
-            CupertinoPicker(
-              itemExtent: 100,
-              onSelectedItemChanged: (_) {},
-              children: _sloganContent
-                  .map((e) => Center(
-                        child: Text(
-                          e,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
+    return Scaffold(
+      backgroundColor: bgColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Logo(),
+      ),
+      floatingActionButton: SupportFloatButton(
+        infoMessage: infoMessage,
+        onInfoAnimationComplete: onInfoAnimationComplete,
+      ),
+      body: Stack(
+        children: [
+          CupertinoPicker(
+            itemExtent: 100,
+            onSelectedItemChanged: (_) {},
+            children: _sloganContent
+                .map((e) => Center(
+                      child: Text(
+                        e,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
                         ),
-                      ))
-                  .toList(),
-            ),
-            AnimatedTicketButton(
-              onPressed: onTapCounter,
-            ),
-          ],
-        ),
+                      ),
+                    ))
+                .toList(),
+          ),
+          AnimatedTicketButton(
+            onPressed: onTapCounter,
+          ),
+        ],
       ),
     );
   }

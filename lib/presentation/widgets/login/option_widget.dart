@@ -25,9 +25,10 @@ class OptionWidget extends StatelessWidget {
     const morpheusHeight = 350.0;
 
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Image.asset(
-          images.morpheus.path,
+          image.morpheus.path,
           height: morpheusHeight,
         ),
         Positioned(
@@ -35,7 +36,7 @@ class OptionWidget extends StatelessWidget {
           left: 0,
           right: 0,
           child: Image.asset(
-            images.hair.path,
+            image.hair.path,
             height: hairHeight,
           ),
         )

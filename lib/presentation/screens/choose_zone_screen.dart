@@ -77,8 +77,8 @@ class _Slide1 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 25,
             children: [
-              Image.asset(images.cart.path),
-              Image.asset(images.rug.path),
+              Image.asset(image.cart.path),
+              Image.asset(image.rug.path),
             ],
           ),
         ],
@@ -102,7 +102,7 @@ class _Slide2 extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Image.asset(
-            images.formBg.path,
+            image.formBg.path,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -169,14 +169,14 @@ class _Card extends HookWidget {
   Widget build(BuildContext context) {
     final random = useMemoized(() => Random());
     final avatars = useMemoized(() => [
-          images.avatar1.path,
-          images.avatar2.path,
-          images.avatar3.path,
-          images.avatar4.path,
-          images.avatar5.path,
-          images.avatar6.path,
-          images.avatar7.path,
-          images.avatar8.path,
+          image.avatar1.path,
+          image.avatar2.path,
+          image.avatar3.path,
+          image.avatar4.path,
+          image.avatar5.path,
+          image.avatar6.path,
+          image.avatar7.path,
+          image.avatar8.path,
         ]);
     final names = useMemoized(() => [
           'для себе',

@@ -15,8 +15,8 @@ class BackgroundWidget extends StatefulWidget {
 
 class _BackgroundWidgetState extends State<BackgroundWidget> {
   final imageSource = [
-    images.a1StartScreen.path,
-    images.a1StartScreenWithClip.path,
+    image.a1StartScreen.path,
+    image.a1StartScreenWithClip.path,
   ];
   int get randomRepeatCount => math.Random().nextInt(6) + 3;
 
@@ -24,11 +24,11 @@ class _BackgroundWidgetState extends State<BackgroundWidget> {
   Widget build(BuildContext context) {
     return Stack(fit: StackFit.expand, children: [
       Image.asset(
-        images.a1StartScreen.path,
+        image.a1StartScreen.path,
         fit: BoxFit.cover,
       ),
       Image.asset(
-        images.a1StartScreenWithClip.path,
+        image.a1StartScreenWithClip.path,
         fit: BoxFit.cover,
       )
           .animate(

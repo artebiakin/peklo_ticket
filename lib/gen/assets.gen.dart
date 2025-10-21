@@ -11,88 +11,80 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
+class $AssetsImageGen {
+  const $AssetsImageGen();
 
-  /// File path: assets/images/1. Start screen with clip.png
+  /// File path: assets/image/1. Start screen with clip.png
   AssetGenImage get a1StartScreenWithClip =>
-      const AssetGenImage('assets/images/1. Start screen with clip.png');
+      const AssetGenImage('assets/image/1. Start screen with clip.png');
 
-  /// File path: assets/images/1. Start screen.png
+  /// File path: assets/image/1. Start screen.png
   AssetGenImage get a1StartScreen =>
-      const AssetGenImage('assets/images/1. Start screen.png');
+      const AssetGenImage('assets/image/1. Start screen.png');
 
-  /// File path: assets/images/avatar_1.png
-  AssetGenImage get avatar1 =>
-      const AssetGenImage('assets/images/avatar_1.png');
+  /// File path: assets/image/avatar_1.png
+  AssetGenImage get avatar1 => const AssetGenImage('assets/image/avatar_1.png');
 
-  /// File path: assets/images/avatar_2.png
-  AssetGenImage get avatar2 =>
-      const AssetGenImage('assets/images/avatar_2.png');
+  /// File path: assets/image/avatar_2.png
+  AssetGenImage get avatar2 => const AssetGenImage('assets/image/avatar_2.png');
 
-  /// File path: assets/images/avatar_3.png
-  AssetGenImage get avatar3 =>
-      const AssetGenImage('assets/images/avatar_3.png');
+  /// File path: assets/image/avatar_3.png
+  AssetGenImage get avatar3 => const AssetGenImage('assets/image/avatar_3.png');
 
-  /// File path: assets/images/avatar_4.png
-  AssetGenImage get avatar4 =>
-      const AssetGenImage('assets/images/avatar_4.png');
+  /// File path: assets/image/avatar_4.png
+  AssetGenImage get avatar4 => const AssetGenImage('assets/image/avatar_4.png');
 
-  /// File path: assets/images/avatar_5.png
-  AssetGenImage get avatar5 =>
-      const AssetGenImage('assets/images/avatar_5.png');
+  /// File path: assets/image/avatar_5.png
+  AssetGenImage get avatar5 => const AssetGenImage('assets/image/avatar_5.png');
 
-  /// File path: assets/images/avatar_6.png
-  AssetGenImage get avatar6 =>
-      const AssetGenImage('assets/images/avatar_6.png');
+  /// File path: assets/image/avatar_6.png
+  AssetGenImage get avatar6 => const AssetGenImage('assets/image/avatar_6.png');
 
-  /// File path: assets/images/avatar_7.png
-  AssetGenImage get avatar7 =>
-      const AssetGenImage('assets/images/avatar_7.png');
+  /// File path: assets/image/avatar_7.png
+  AssetGenImage get avatar7 => const AssetGenImage('assets/image/avatar_7.png');
 
-  /// File path: assets/images/avatar_8.png
-  AssetGenImage get avatar8 =>
-      const AssetGenImage('assets/images/avatar_8.png');
+  /// File path: assets/image/avatar_8.png
+  AssetGenImage get avatar8 => const AssetGenImage('assets/image/avatar_8.png');
 
-  /// File path: assets/images/button_next.png
+  /// File path: assets/image/button_next.png
   AssetGenImage get buttonNext =>
-      const AssetGenImage('assets/images/button_next.png');
+      const AssetGenImage('assets/image/button_next.png');
 
-  /// File path: assets/images/cart.png
-  AssetGenImage get cart => const AssetGenImage('assets/images/cart.png');
+  /// File path: assets/image/cart.png
+  AssetGenImage get cart => const AssetGenImage('assets/image/cart.png');
 
-  /// File path: assets/images/coin.png
-  AssetGenImage get coin => const AssetGenImage('assets/images/coin.png');
+  /// File path: assets/image/coin.png
+  AssetGenImage get coin => const AssetGenImage('assets/image/coin.png');
 
-  /// File path: assets/images/form_bg.png
-  AssetGenImage get formBg => const AssetGenImage('assets/images/form_bg.png');
+  /// File path: assets/image/form_bg.png
+  AssetGenImage get formBg => const AssetGenImage('assets/image/form_bg.png');
 
-  /// File path: assets/images/hair.png
-  AssetGenImage get hair => const AssetGenImage('assets/images/hair.png');
+  /// File path: assets/image/hair.png
+  AssetGenImage get hair => const AssetGenImage('assets/image/hair.png');
 
-  /// File path: assets/images/login_done.png
+  /// File path: assets/image/login_done.png
   AssetGenImage get loginDone =>
-      const AssetGenImage('assets/images/login_done.png');
+      const AssetGenImage('assets/image/login_done.png');
 
-  /// File path: assets/images/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+  /// File path: assets/image/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/image/logo.png');
 
-  /// File path: assets/images/morpheus.png
+  /// File path: assets/image/morpheus.png
   AssetGenImage get morpheus =>
-      const AssetGenImage('assets/images/morpheus.png');
+      const AssetGenImage('assets/image/morpheus.png');
 
-  /// File path: assets/images/password_bg.png
+  /// File path: assets/image/password_bg.png
   AssetGenImage get passwordBg =>
-      const AssetGenImage('assets/images/password_bg.png');
+      const AssetGenImage('assets/image/password_bg.png');
 
-  /// File path: assets/images/rug.png
-  AssetGenImage get rug => const AssetGenImage('assets/images/rug.png');
+  /// File path: assets/image/rug.png
+  AssetGenImage get rug => const AssetGenImage('assets/image/rug.png');
 
-  /// File path: assets/images/support.png
-  AssetGenImage get support => const AssetGenImage('assets/images/support.png');
+  /// File path: assets/image/support.png
+  AssetGenImage get support => const AssetGenImage('assets/image/support.png');
 
-  /// File path: assets/images/ticket.png
-  AssetGenImage get ticket => const AssetGenImage('assets/images/ticket.png');
+  /// File path: assets/image/ticket.png
+  AssetGenImage get ticket => const AssetGenImage('assets/image/ticket.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -121,10 +113,21 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/password.svg
+  String get password => 'assets/svg/password.svg';
+
+  /// List of all assets
+  List<String> get values => [password];
+}
+
 class Assets {
   const Assets._();
 
-  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsImageGen image = $AssetsImageGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {

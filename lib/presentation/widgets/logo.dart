@@ -10,7 +10,7 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      images.logo.path,
+      image.logo.path,
       fit: BoxFit.cover,
     )
         .animate(

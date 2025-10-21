@@ -1,3 +1,4 @@
 import 'package:peklo_ticket/gen/assets.gen.dart';
 
-const $AssetsImagesGen images = $AssetsImagesGen();
+const $AssetsImageGen image = $AssetsImageGen();
+const $AssetsSvgGen svg = $AssetsSvgGen();

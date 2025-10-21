@@ -11,17 +11,18 @@ class SupportFloatButton extends StatelessWidget {
   final String infoMessage;
   final VoidCallback onInfoAnimationComplete;
 
-  const SupportFloatButton(
-      {super.key,
-      required this.infoMessage,
-      required this.onInfoAnimationComplete});
+  const SupportFloatButton({
+    super.key,
+    required this.infoMessage,
+    required this.onInfoAnimationComplete,
+  });
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       onPressed: () {},
       backgroundColor: Colors.black,
-      icon: Image.asset(images.support.path),
+      icon: Image.asset(image.support.path),
       label: Stack(
         children: [
           const Text(
@@ -44,6 +45,7 @@ class SupportFloatButton extends StatelessWidget {
                   ),
                 ),
                 TypingWithMistakes(
+                  key: Key(infoMessage),
                   onComplete: onInfoAnimationComplete,
                   text: infoMessage.toUpperCase(),
                   style: const TextStyle(

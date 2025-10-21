@@ -73,7 +73,7 @@ class AnimatedTicketButton extends HookWidget {
         onTap: onPressed,
         child: Transform.rotate(
           angle: buttonPosition.value.angle! * math.pi,
-          child: Image.asset(images.ticket.path),
+          child: Image.asset(image.ticket.path),
         ),
       ),
     )
