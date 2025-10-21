@@ -56,6 +56,10 @@ class $AssetsImageGen {
   /// File path: assets/image/coin.png
   AssetGenImage get coin => const AssetGenImage('assets/image/coin.png');
 
+  /// File path: assets/image/dashboard_image.png
+  AssetGenImage get dashboardImage =>
+      const AssetGenImage('assets/image/dashboard_image.png');
+
   /// File path: assets/image/form_bg.png
   AssetGenImage get formBg => const AssetGenImage('assets/image/form_bg.png');
 
@@ -101,6 +105,7 @@ class $AssetsImageGen {
         buttonNext,
         cart,
         coin,
+        dashboardImage,
         formBg,
         hair,
         loginDone,

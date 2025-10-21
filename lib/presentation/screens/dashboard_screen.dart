@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/dashboard/animated_ticket_button.dart';
 import 'package:peklo_ticket/presentation/widgets/dashboard/support_float_button.dart';
+import 'package:peklo_ticket/presentation/widgets/marquee_text.dart';
 import 'package:peklo_ticket/presentation/widgets/widgets.dart';
 
 const bgColor = Color(0xFF27E030);
@@ -51,16 +52,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       };
     });
 
-    await Future.delayed(const Duration(seconds: 3));
-
     if (!mounted) return;
 
     setState(() {
       isButtonLocked = false;
     });
   }
-
-  // context.go(AppRoute.login.path)
 
   Future<void> onInfoAnimationComplete() async {
     await Future.delayed(1.seconds);
@@ -74,39 +71,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: bgColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Logo(),
-      ),
-      floatingActionButton: SupportFloatButton(
-        infoMessage: infoMessage,
-        onInfoAnimationComplete: onInfoAnimationComplete,
-      ),
-      body: Stack(
-        children: [
-          CupertinoPicker(
-            itemExtent: 100,
-            onSelectedItemChanged: (_) {},
-            children: _sloganContent
-                .map((e) => Center(
-                      child: Text(
-                        e,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        backgroundColor: bgColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: const Logo(),
+        ),
+        floatingActionButton: SupportFloatButton(
+          infoMessage: infoMessage,
+          onInfoAnimationComplete: onInfoAnimationComplete,
+        ),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            Positioned.fill(
+              child: Center(
+                child:
+                    Image.asset(image.dashboardImage.path, fit: BoxFit.cover),
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: _sloganContent
+                  .mapIndexed(
+                    (i, e) => MarqueeText(
+                      text: e,
+                      reverse: i.isEven,
+                      speed: const Duration(seconds: 12),
+                      gap: 40,
+                      style: TextStyle(
+                        color:
+                            i.isEven ? const Color(0xFF4400FF) : Colors.white,
+                        fontSize: 120,
+                        fontWeight: FontWeight.w900,
                       ),
-                    ))
-                .toList(),
-          ),
-          AnimatedTicketButton(
-            onPressed: onTapCounter,
-          ),
-        ],
-      ),
-    );
+                    ),
+                  )
+                  .toList(),
+            ),
+            AnimatedTicketButton(
+              onPressed: onTapCounter,
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
