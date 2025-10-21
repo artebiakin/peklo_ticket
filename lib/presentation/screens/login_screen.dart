@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:peklo_ticket/config/config.dart';
+import 'package:peklo_ticket/presentation/widgets/login/complete_widget.dart';
 import 'package:peklo_ticket/presentation/widgets/login/login_error.dart';
 import 'package:peklo_ticket/presentation/widgets/login/option_widget.dart';
 
@@ -78,6 +79,7 @@ class LoginScreen extends HookWidget {
                 controller: completeController,
                 target: currentState.value == _LoginState.completed ? 1 : 0,
               )
+              .scale(delay: 0.seconds)
               .saturate(duration: 15.seconds)
               .fadeIn(duration: 15.seconds),
           if (currentState.value == _LoginState.completed)
@@ -102,61 +104,3 @@ class LoginScreen extends HookWidget {
 }
 
 enum _LoginState { firstQuest, error, secondQuest, completed }
-
-class CompleteWidget extends StatelessWidget {
-  final VoidCallback onTap;
-  final AnimationController controller;
-
-  const CompleteWidget({
-    super.key,
-    required this.controller,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      spacing: 23,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Text(
-            'Ви увійшли',
-            style: TextStyle(
-              color: Colors.green,
-              fontSize: 200,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-        ),
-        Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxHeight: 300,
-              maxWidth: 300,
-            ),
-            child: Image.asset(image.loginDone.path),
-          ),
-        ),
-        ValueListenableBuilder(
-            valueListenable: controller,
-            builder: (context, value, child) {
-              if (value != 1) return const SizedBox.shrink();
-
-              return GestureDetector(
-                onTap: onTap,
-                child: const Text(
-                  'перейти до вибору місць',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              );
-            }),
-      ],
-    );
-  }
-}
