@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import 'package:peklo_ticket/config/router/blood_transition.dart';
 import 'package:peklo_ticket/presentation/screens/screens.dart';
 
 enum AppRoute {
@@ -32,14 +33,20 @@ final router = GoRouter(
   initialLocation: AppRoute.start.path,
   routes: [
     GoRoute(
-        path: AppRoute.start.path,
-        builder: (context, state) => const StartScreen()),
+      path: AppRoute.start.path,
+      builder: (context, state) => const StartScreen(),
+    ),
     GoRoute(
-        path: AppRoute.password.path,
-        builder: (context, state) => const PasswordScreen()),
+      path: AppRoute.password.path,
+      pageBuilder: (context, state) => bloodTransitionPage(
+        key: state.pageKey,
+        child: const PasswordScreen(),
+      ),
+    ),
     GoRoute(
-        path: AppRoute.dashboard.path,
-        builder: (context, state) => const DashboardScreen()),
+      path: AppRoute.dashboard.path,
+      builder: (context, state) => const DashboardScreen(),
+    ),
     GoRoute(
         path: AppRoute.login.path,
         builder: (context, state) => const LoginScreen()),
@@ -47,7 +54,9 @@ final router = GoRouter(
         path: AppRoute.form.path,
         builder: (context, state) => const FormScreen()),
     GoRoute(
-        path: AppRoute.chooseZone.path,
-        builder: (context, state) => const ChooseZoneScreen()),
+      path: AppRoute.chooseZone.path,
+      pageBuilder: (context, state) => bloodTransitionPage(
+          key: state.pageKey, child: const ChooseZoneScreen()),
+    ),
   ],
 );

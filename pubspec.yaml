@@ -30,6 +30,8 @@ flutter:
   assets:
     - assets/image/
     - assets/svg/
+  shaders:
+    - assets/shaders/wave.frag
 
 flutter_gen:
   output: lib/gen/
