@@ -30,7 +30,7 @@ class LoginScreen extends HookWidget {
     }
 
     void onChooseZone() {
-      context.go(AppRoute.chooseZone.path);
+      context.go(AppRoute.form.path);
     }
 
     return Scaffold(
