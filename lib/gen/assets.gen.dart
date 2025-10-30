@@ -22,6 +22,26 @@ class $AssetsImageGen {
   AssetGenImage get a1StartScreen =>
       const AssetGenImage('assets/image/1. Start screen.png');
 
+  /// File path: assets/image/Alcohol coctail zone.png
+  AssetGenImage get alcoholCoctailZone =>
+      const AssetGenImage('assets/image/Alcohol coctail zone.png');
+
+  /// File path: assets/image/Fan zone 1.png
+  AssetGenImage get fanZone1 =>
+      const AssetGenImage('assets/image/Fan zone 1.png');
+
+  /// File path: assets/image/Fan zone 2.png
+  AssetGenImage get fanZone2 =>
+      const AssetGenImage('assets/image/Fan zone 2.png');
+
+  /// File path: assets/image/Non-alcoholic coctails zone.png
+  AssetGenImage get nonAlcoholicCoctailsZone =>
+      const AssetGenImage('assets/image/Non-alcoholic coctails zone.png');
+
+  /// File path: assets/image/Scary goast group.png
+  AssetGenImage get scaryGoastGroup =>
+      const AssetGenImage('assets/image/Scary goast group.png');
+
   /// File path: assets/image/avatar_1.png
   AssetGenImage get avatar1 => const AssetGenImage('assets/image/avatar_1.png');
 
@@ -53,8 +73,16 @@ class $AssetsImageGen {
   /// File path: assets/image/cart.png
   AssetGenImage get cart => const AssetGenImage('assets/image/cart.png');
 
+  /// File path: assets/image/choose_zone_bg.png
+  AssetGenImage get chooseZoneBg =>
+      const AssetGenImage('assets/image/choose_zone_bg.png');
+
   /// File path: assets/image/coin.png
   AssetGenImage get coin => const AssetGenImage('assets/image/coin.png');
+
+  /// File path: assets/image/complete_chooze_bg.png
+  AssetGenImage get completeChoozeBg =>
+      const AssetGenImage('assets/image/complete_chooze_bg.png');
 
   /// File path: assets/image/dashboard_image.png
   AssetGenImage get dashboardImage =>
@@ -66,12 +94,23 @@ class $AssetsImageGen {
   /// File path: assets/image/hair.png
   AssetGenImage get hair => const AssetGenImage('assets/image/hair.png');
 
+  /// File path: assets/image/head_bottom.png
+  AssetGenImage get headBottom =>
+      const AssetGenImage('assets/image/head_bottom.png');
+
+  /// File path: assets/image/head_top.png
+  AssetGenImage get headTop => const AssetGenImage('assets/image/head_top.png');
+
   /// File path: assets/image/login_done.png
   AssetGenImage get loginDone =>
       const AssetGenImage('assets/image/login_done.png');
 
   /// File path: assets/image/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/image/logo.png');
+
+  /// File path: assets/image/main_stage.png
+  AssetGenImage get mainStage =>
+      const AssetGenImage('assets/image/main_stage.png');
 
   /// File path: assets/image/morpheus.png
   AssetGenImage get morpheus =>
@@ -94,6 +133,11 @@ class $AssetsImageGen {
   List<AssetGenImage> get values => [
         a1StartScreenWithClip,
         a1StartScreen,
+        alcoholCoctailZone,
+        fanZone1,
+        fanZone2,
+        nonAlcoholicCoctailsZone,
+        scaryGoastGroup,
         avatar1,
         avatar2,
         avatar3,
@@ -104,12 +148,17 @@ class $AssetsImageGen {
         avatar8,
         buttonNext,
         cart,
+        chooseZoneBg,
         coin,
+        completeChoozeBg,
         dashboardImage,
         formBg,
         hair,
+        headBottom,
+        headTop,
         loginDone,
         logo,
+        mainStage,
         morpheus,
         passwordBg,
         rug,
