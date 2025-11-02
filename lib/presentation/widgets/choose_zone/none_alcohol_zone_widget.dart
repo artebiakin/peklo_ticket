@@ -23,6 +23,7 @@ class _NoneAlcoholZoneWidgetState extends State<NoneAlcoholZoneWidget> {
             ),
             content: const Wrap(
               spacing: 32,
+              runSpacing: 32,
               children: [
                 Text("Безкоштовні безалкогольні коктейлі:"),
                 Text("“ЛимонАД картопляний”"),

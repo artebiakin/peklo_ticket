@@ -42,7 +42,7 @@ enum AppRoute {
 }
 
 final router = GoRouter(
-  initialLocation: AppRoute.start.path,
+  initialLocation: AppRoute.chooseZone.path,
   routes: [
     GoRoute(
       path: AppRoute.start.path,
