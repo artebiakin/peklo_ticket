@@ -167,6 +167,89 @@ class $AssetsImageGen {
       ];
 }
 
+class $AssetsSoundsGen {
+  const $AssetsSoundsGen();
+
+  /// File path: assets/sounds/drone-12-123063.mp3
+  String get drone12123063 => 'assets/sounds/drone-12-123063.mp3';
+
+  /// File path: assets/sounds/g-ga-s-u-rajskomu-sadu-yavorina-skysoundcc_JN3x3cCw.mp3
+  String get gGaSURajskomuSaduYavorinaSkysoundccJN3x3cCw =>
+      'assets/sounds/g-ga-s-u-rajskomu-sadu-yavorina-skysoundcc_JN3x3cCw.mp3';
+
+  /// File path: assets/sounds/vo-bobul-a-lipi-cv-tut-skysoundcc_3TK6cl0h.mp3
+  String get voBobulALipiCvTutSkysoundcc3TK6cl0h =>
+      'assets/sounds/vo-bobul-a-lipi-cv-tut-skysoundcc_3TK6cl0h.mp3';
+
+  /// File path: assets/sounds/баба не чує глуха як тетеря.mp3
+  String get aMp3 => 'assets/sounds/баба не чує глуха як тетеря.mp3';
+
+  /// File path: assets/sounds/без двадцяти девять.mp3
+  String get aMp3_ => 'assets/sounds/без двадцяти девять.mp3';
+
+  /// File path: assets/sounds/без двадцяти десять.mp3
+  String get aMp3__ => 'assets/sounds/без двадцяти десять.mp3';
+
+  /// File path: assets/sounds/да.mp3
+  String get aMp3___ => 'assets/sounds/да.mp3';
+
+  /// File path: assets/sounds/девять да.mp3
+  String get aMp3____ => 'assets/sounds/девять да.mp3';
+
+  /// File path: assets/sounds/девять чи десять.mp3
+  String get aMp3_____ => 'assets/sounds/девять чи десять.mp3';
+
+  /// File path: assets/sounds/девять.mp3
+  String get aMp3______ => 'assets/sounds/девять.mp3';
+
+  /// File path: assets/sounds/десять.mp3
+  String get aMp3_______ => 'assets/sounds/десять.mp3';
+
+  /// File path: assets/sounds/звук помилки можна на початковий екран.mp3
+  String get aMp3________ =>
+      'assets/sounds/звук помилки можна на початковий екран.mp3';
+
+  /// File path: assets/sounds/крик.mp3
+  String get aMp3_________ => 'assets/sounds/крик.mp3';
+
+  /// File path: assets/sounds/ну спасіба.mp3
+  String get aMp3__________ => 'assets/sounds/ну спасіба.mp3';
+
+  /// File path: assets/sounds/ну так а скільки.mp3
+  String get aMp3___________ => 'assets/sounds/ну так а скільки.mp3';
+
+  /// File path: assets/sounds/ой не чує баба.mp3
+  String get aMp3____________ => 'assets/sounds/ой не чує баба.mp3';
+
+  /// File path: assets/sounds/ой.mp3
+  String get aMp3_____________ => 'assets/sounds/ой.mp3';
+
+  /// File path: assets/sounds/девять2.mp3
+  String get a2 => 'assets/sounds/девять2.mp3';
+
+  /// List of all assets
+  List<String> get values => [
+        drone12123063,
+        gGaSURajskomuSaduYavorinaSkysoundccJN3x3cCw,
+        voBobulALipiCvTutSkysoundcc3TK6cl0h,
+        aMp3,
+        aMp3_,
+        aMp3__,
+        aMp3___,
+        aMp3____,
+        aMp3_____,
+        aMp3______,
+        aMp3_______,
+        aMp3________,
+        aMp3_________,
+        aMp3__________,
+        aMp3___________,
+        aMp3____________,
+        aMp3_____________,
+        a2
+      ];
+}
+
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
@@ -181,6 +264,7 @@ class Assets {
   const Assets._();
 
   static const $AssetsImageGen image = $AssetsImageGen();
+  static const $AssetsSoundsGen sounds = $AssetsSoundsGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 

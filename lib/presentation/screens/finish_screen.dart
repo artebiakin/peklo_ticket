@@ -4,9 +4,26 @@ import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/logo.dart';
+import 'package:peklo_ticket/services/services.dart';
 
-class FinishScreen extends StatelessWidget {
+class FinishScreen extends StatefulWidget {
   const FinishScreen({super.key});
+
+  @override
+  State<FinishScreen> createState() => _FinishScreenState();
+}
+
+class _FinishScreenState extends State<FinishScreen> {
+  @override
+  void initState() {
+    playSound();
+    super.initState();
+  }
+
+  void playSound() async {
+    await Future.delayed(4800.ms);
+    AudioplayersService().playSfx(audio.aMp3_________, volume: 1);
+  }
 
   @override
   Widget build(BuildContext context) {

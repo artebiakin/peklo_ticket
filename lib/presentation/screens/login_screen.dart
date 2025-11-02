@@ -8,6 +8,7 @@ import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/login/complete_widget.dart';
 import 'package:peklo_ticket/presentation/widgets/login/login_error.dart';
 import 'package:peklo_ticket/presentation/widgets/login/option_widget.dart';
+import 'package:peklo_ticket/services/services.dart';
 
 class LoginScreen extends HookWidget {
   const LoginScreen({super.key});
@@ -27,6 +28,19 @@ class LoginScreen extends HookWidget {
 
     void onCompleted() {
       currentState.value = _LoginState.completed;
+    }
+
+    void onLeftTap() {
+      AudioplayersService()
+          .playSfx(audio.voBobulALipiCvTutSkysoundcc3TK6cl0h, volume: 1);
+      onCompleted();
+    }
+
+    void onRightTap() {
+      AudioplayersService().playSfx(
+          audio.gGaSURajskomuSaduYavorinaSkysoundccJN3x3cCw,
+          volume: 1);
+      onCompleted();
     }
 
     void onChooseZone() {
@@ -61,8 +75,8 @@ class LoginScreen extends HookWidget {
             child: OptionWidget(
               leftOptionText: 'А липи цвітуть,\nдухмяні, духмяні',
               rightOptionText: 'На могилі моїй\nпосадіть молоду яворииину',
-              onLeftTap: onCompleted,
-              onRightTap: onCompleted,
+              onLeftTap: onLeftTap,
+              onRightTap: onRightTap,
             ),
           )
               .animate(
@@ -80,8 +94,8 @@ class LoginScreen extends HookWidget {
                 target: currentState.value == _LoginState.completed ? 1 : 0,
               )
               .scale(delay: 0.seconds)
-              .saturate(duration: 15.seconds)
-              .fadeIn(duration: 15.seconds),
+              .saturate(duration: 8.seconds)
+              .fadeIn(duration: 8.seconds),
           if (currentState.value == _LoginState.completed)
             Positioned(
               bottom: 0,

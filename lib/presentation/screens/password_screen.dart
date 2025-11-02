@@ -8,6 +8,7 @@ import 'package:pinput/pinput.dart';
 import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/password/overlay_widget.dart';
 import 'package:peklo_ticket/presentation/widgets/password/svg_shape.dart';
+import 'package:peklo_ticket/services/services.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});
@@ -37,14 +38,24 @@ class _PasswordScreenState extends State<PasswordScreen> {
         message = '';
       });
       context.go(AppRoute.dashboard.path);
+      AudioplayersService().playSfx(audio.aMp3__________, volume: 1);
     } else {
       pinController.clear();
       setState(() {
         counterErrors++;
         message = switch (counterErrors) {
-          1 => 'Дев’ять чи\nдесять?',
-          2 => 'не чує баба...',
-          3 => 'Без пятнадцяти \nдесять?',
+          1 => () {
+              AudioplayersService().playSfx(audio.aMp3_____, volume: 1);
+              return 'Дев’ять чи\nдесять?';
+            }(),
+          2 => () {
+              AudioplayersService().playSfx(audio.aMp3____________, volume: 1);
+              return 'не чує баба...';
+            }(),
+          3 => () {
+              AudioplayersService().playSfx(audio.aMp3_, volume: 1);
+              return 'Без пятнадцяти \nдесять?';
+            }(),
           4 => '',
           _ => 'все ще нєт, \nдумай далі',
         };

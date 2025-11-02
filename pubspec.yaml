@@ -16,6 +16,7 @@ dependencies:
   flutter_hooks: ^0.21.3+1
   flutter_svg: ^2.2.1
   collection: ^1.19.1
+  audioplayers: ^6.5.1
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +31,7 @@ flutter:
   assets:
     - assets/image/
     - assets/svg/
+    - assets/sounds/
   shaders:
     - assets/shaders/wave.frag
 
