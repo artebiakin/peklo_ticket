@@ -42,6 +42,14 @@ class $AssetsImageGen {
   AssetGenImage get scaryGoastGroup =>
       const AssetGenImage('assets/image/Scary goast group.png');
 
+  /// File path: assets/image/add_button.png
+  AssetGenImage get addButton =>
+      const AssetGenImage('assets/image/add_button.png');
+
+  /// File path: assets/image/add_button_red.png
+  AssetGenImage get addButtonRed =>
+      const AssetGenImage('assets/image/add_button_red.png');
+
   /// File path: assets/image/avatar_1.png
   AssetGenImage get avatar1 => const AssetGenImage('assets/image/avatar_1.png');
 
@@ -138,6 +146,8 @@ class $AssetsImageGen {
         fanZone2,
         nonAlcoholicCoctailsZone,
         scaryGoastGroup,
+        addButton,
+        addButtonRed,
         avatar1,
         avatar2,
         avatar3,

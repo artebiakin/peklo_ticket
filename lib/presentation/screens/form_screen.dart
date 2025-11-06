@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/widgets.dart';
+import 'package:peklo_ticket/utils/lowercase_text_input_formatter.dart';
 
 class FormScreen extends HookWidget {
   const FormScreen({super.key});
@@ -15,6 +16,8 @@ class FormScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final viewTransformationController = useTransformationController();
+
+    final selectedNames = useState<List<String>>([]);
 
     return Scaffold(
       body: LayoutBuilder(
@@ -33,10 +36,12 @@ class FormScreen extends HookWidget {
               _Slide2(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
+                onSelected: (names) => selectedNames.value = names,
               ),
               _Slide3(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
+                selectedNames: selectedNames.value,
               ),
             ],
           ),
@@ -88,54 +93,72 @@ class _Slide1 extends StatelessWidget {
   }
 }
 
-class _Slide2 extends StatelessWidget {
+class _Slide2 extends HookWidget {
   final double width;
   final double height;
 
-  const _Slide2({required this.width, required this.height});
+  final ValueChanged<List<String>>? onSelected;
+
+  const _Slide2({required this.width, required this.height, this.onSelected});
 
   @override
   Widget build(BuildContext context) {
+    final selectedNames = useState<List<String>>([]);
+
+    void handleSelection(String name) {
+      if (name.isEmpty) {
+        selectedNames.value =
+            selectedNames.value.where((element) => element != name).toList();
+      } else {
+        selectedNames.value = [...selectedNames.value, name];
+      }
+      onSelected?.call(selectedNames.value);
+    }
+
     return SizedBox(
       width: width,
       height: height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Image.asset(
-            image.formBg.path,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const SizedBox.shrink(),
-              const SizedBox.shrink(),
-              Row(
+      child: Center(
+        child: Stack(
+          children: [
+            Image.asset(
+              image.formBg.path,
+            ),
+            Positioned.fill(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  4,
-                  (index) => _Card(
-                    onSelected: (value) {
-                      debugPrint('Selected: $value');
-                    },
+                children: [
+                  const Expanded(
+                    flex: 3,
+                    child: SizedBox.shrink(),
                   ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  4,
-                  (index) => _Card(
-                    onSelected: (value) {
-                      debugPrint('Selected: $value');
-                    },
+                  Expanded(
+                    flex: 4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: List.generate(
+                        4,
+                        (index) => _Card(onSelected: handleSelection),
+                      ),
+                    ),
                   ),
-                ),
+                  Expanded(
+                    flex: 4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                        4,
+                        (index) => _Card(onSelected: handleSelection),
+                      ),
+                    ),
+                  ),
+                  const Expanded(child: SizedBox.shrink()),
+                ],
               ),
-              const SizedBox.shrink(),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -145,11 +168,23 @@ class _Slide3 extends HookWidget {
   final double width;
   final double height;
 
-  const _Slide3({required this.width, required this.height});
+  final List<String> selectedNames;
+
+  const _Slide3({
+    required this.width,
+    required this.height,
+    required this.selectedNames,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final counter = useState(1);
+    final counter = useState(0);
+    final name = useState('');
+
+    final dataValid =
+        selectedNames.isNotEmpty && name.value.isNotEmpty && counter.value > 0;
+    final onNext =
+        dataValid ? () => context.go(AppRoute.chooseZone.path) : null;
 
     return Container(
       width: width,
@@ -183,6 +218,10 @@ class _Slide3 extends HookWidget {
                   color: Colors.white,
                   fontSize: 46,
                 ),
+                inputFormatters: [
+                  LowercaseTextInputFormatter(),
+                ],
+                onChanged: (value) => name.value = value,
               ),
               const Text(
                 'Скільки квитків?',
@@ -197,7 +236,7 @@ class _Slide3 extends HookWidget {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        onTap: () => counter.value++,
+                        onTap: () => counter.value += Random().nextInt(3) + 1,
                         child: Container(
                           color: Colors.red,
                           child: const Center(
@@ -222,7 +261,7 @@ class _Slide3 extends HookWidget {
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () => counter.value--,
+                        onTap: () => counter.value -= Random().nextInt(2) + 1,
                         child: Container(
                           color: Colors.red,
                           child: const Center(
@@ -240,8 +279,11 @@ class _Slide3 extends HookWidget {
             ],
           ),
           GestureDetector(
-            onTap: () => context.go(AppRoute.chooseZone.path),
-            child: Image.asset(image.buttonNext.path),
+            onTap: onNext,
+            child: Opacity(
+              opacity: onNext != null ? 1 : 0.2,
+              child: Image.asset(image.buttonNext.path),
+            ),
           ),
         ],
       ),
@@ -280,47 +322,103 @@ class _Card extends HookWidget {
       avatars[random.nextInt(avatars.length - 1)],
     );
 
+    final isSelected = useState(false);
+    final selectedName = useState<String?>(null);
+    final selectedAvatar = useState<String?>(null);
+
     return GestureDetector(
-      onTap: () => onSelected?.call(currentName.value),
-      child: Container(
-        width: 70,
-        color: Colors.black,
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              currentName.value,
-              style: const TextStyle(color: Colors.white),
-            )
-                .animate(
-                  key: ValueKey(currentName.value),
-                  onComplete: (controller) {
-                    currentName.value = names[random.nextInt(names.length - 1)];
-                    controller.forward(from: 0);
-                  },
-                )
-                .fadeIn(
-                  duration: 500.ms,
-                  curve: Curves.easeIn,
-                )
-                .then(delay: 1.seconds),
-            Image.asset(currentAvatar.value)
-                .animate(
-                  key: ValueKey(currentAvatar.value),
-                  onComplete: (controller) {
-                    currentAvatar.value =
-                        avatars[random.nextInt(avatars.length - 1)];
-                    controller.forward(from: 0);
-                  },
-                )
-                .fadeIn(
-                  duration: 500.ms,
-                  curve: Curves.easeIn,
-                )
-                .then(delay: 1.seconds),
-          ],
-        ),
+      onTap: () {
+        isSelected.value = !isSelected.value;
+        if (isSelected.value) {
+          selectedName.value = currentName.value;
+          selectedAvatar.value = currentAvatar.value;
+          onSelected?.call(currentName.value);
+        } else {
+          selectedName.value = null;
+          selectedAvatar.value = null;
+          onSelected?.call('');
+        }
+      },
+      child: Column(
+        spacing: 12,
+        children: [
+          Image.asset(
+            isSelected.value ? image.addButtonRed.path : image.addButton.path,
+          ),
+          Expanded(
+            child: Container(
+              width: 70,
+              height: double.infinity,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                border: Border.all(color: Colors.yellow, width: 4),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                children: [
+                  if (selectedName.value != null)
+                    Text(
+                      selectedName.value!,
+                      style: const TextStyle(color: Colors.white),
+                    )
+                        .animate(
+                          key: ValueKey(selectedName.value),
+                        )
+                        .fadeIn(
+                          duration: 500.ms,
+                          curve: Curves.easeIn,
+                        )
+                  else
+                    Text(
+                      currentName.value,
+                      style: const TextStyle(color: Colors.white),
+                    )
+                        .animate(
+                          key: ValueKey(currentName.value),
+                          onComplete: (controller) {
+                            currentName.value =
+                                names[random.nextInt(names.length - 1)];
+                            controller.forward(from: 0);
+                          },
+                        )
+                        .fadeIn(
+                          duration: 500.ms,
+                          curve: Curves.easeIn,
+                        )
+                        .then(delay: 1.seconds),
+                  if (selectedAvatar.value != null)
+                    Image.asset(
+                      selectedAvatar.value!,
+                    )
+                        .animate(
+                          key: ValueKey(selectedAvatar.value),
+                        )
+                        .fadeIn(
+                          duration: 500.ms,
+                          curve: Curves.easeIn,
+                        )
+                  else
+                    Image.asset(currentAvatar.value)
+                        .animate(
+                          key: ValueKey(currentAvatar.value),
+                          onComplete: (controller) {
+                            currentAvatar.value =
+                                avatars[random.nextInt(avatars.length - 1)];
+                            controller.forward(from: 0);
+                          },
+                        )
+                        .fadeIn(
+                          duration: 500.ms,
+                          curve: Curves.easeIn,
+                        )
+                        .then(delay: 1.seconds),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

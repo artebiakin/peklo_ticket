@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:peklo_ticket/config/config.dart';
 import 'package:peklo_ticket/presentation/widgets/logo.dart';
@@ -65,6 +66,17 @@ class _FinishScreenState extends State<FinishScreen> {
               )
               .fadeIn(duration: 100.ms),
           const SizedBox.shrink(),
+          Container(
+            height: 55,
+            padding: const EdgeInsets.only(left: 120),
+            alignment: Alignment.centerRight,
+            child: Expanded(
+              child: ElevatedButton(
+                onPressed: () => context.go(AppRoute.start.path),
+                child: const Text('Home'),
+              ),
+            ),
+          ),
         ],
       ),
     );
