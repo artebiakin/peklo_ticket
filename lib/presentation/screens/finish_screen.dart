@@ -66,19 +66,108 @@ class _FinishScreenState extends State<FinishScreen> {
               )
               .fadeIn(duration: 100.ms),
           const SizedBox.shrink(),
-          Container(
-            height: 55,
-            padding: const EdgeInsets.only(left: 120),
-            alignment: Alignment.centerRight,
-            child: Expanded(
-              child: ElevatedButton(
-                onPressed: () => context.go(AppRoute.start.path),
-                child: const Text('Home'),
-              ),
+          Transform.rotate(
+            angle: -0.05,
+            child: BackToNightmaresButton(
+              onPressed: () => context.go(AppRoute.start.path),
             ),
-          ),
+          )
+              .animate()
+              .fade(
+                delay: 7.seconds,
+              )
+              .animate(
+                onPlay: (controller) => controller.repeat(reverse: true),
+              )
+              .rotate(
+                duration: 600.ms,
+                curve: Curves.easeInOut,
+              )
+              .shake(
+                duration: 600.ms,
+                hz: 4,
+              ),
         ],
       ),
     );
   }
+}
+
+class BackToNightmaresButton extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const BackToNightmaresButton({super.key, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: CustomPaint(
+        painter: _ButtonPainter(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Center(
+            child: Text(
+              '← НАЗАД ДО КОШМАРІВ',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                foreground: Paint()
+                  ..shader = const LinearGradient(
+                    colors: [Colors.cyanAccent, Colors.yellowAccent],
+                  ).createShader(const Rect.fromLTWH(0, 0, 300, 100)),
+                shadows: const [
+                  Shadow(
+                    color: Colors.black,
+                    offset: Offset(2, 2),
+                    blurRadius: 3,
+                  ),
+                ],
+                letterSpacing: 2,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ButtonPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final rect = Rect.fromLTWH(0, 0, size.width, size.height);
+    final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(20));
+
+    // Неонова тінь
+    final glowPaint = Paint()
+      ..color = Colors.greenAccent.withValues(alpha: 0.4)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.outer, 15);
+    canvas.drawRRect(rrect, glowPaint);
+
+    // Основний фон із градієнтом
+    final bgPaint = Paint()
+      ..shader = const LinearGradient(
+        colors: [Color(0xFF00FF00), Color(0xFFEE00FF)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ).createShader(rect);
+    canvas.drawRRect(rrect, bgPaint);
+
+    // Рамка в стилі чорно-рожевого патерну
+    const borderWidth = 6.0;
+    const step = 12.0;
+    final path = Path()..addRRect(rrect);
+    final borderPaint = Paint()
+      ..strokeWidth = borderWidth
+      ..style = PaintingStyle.stroke;
+
+    for (double i = 0; i < size.width + size.height * 2; i += step) {
+      borderPaint.color = i ~/ step % 2 == 0 ? Colors.black : Colors.pink;
+      canvas.drawPath(path, borderPaint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
